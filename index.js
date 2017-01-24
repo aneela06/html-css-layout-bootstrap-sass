@@ -1,11 +1,15 @@
 'use strict';
 
-// user require with a reference to bundle the file and use it in this file
-// var example = require('./example');
+const setAPIOrigin = require('../../lib/set-api-origin');
+const config = require('./config');
 
-// load manifests
-// scripts
-require('./assets/scripts/index.js');
+$(() => {
+  setAPIOrigin(location, config);
 
-// styles
-require('./assets/styles/index.scss');
+  // when form is submitted then console log the input
+  $("form").on("submit", function(event){
+    event.preventDefault();
+    let input = $("#name").val();
+    console.log(input);
+  });
+});
